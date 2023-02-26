@@ -21,8 +21,7 @@
 		</div>
 	</div>
 	<footer>
-		<h4> Built by <a href="www." style="text-decoration: none"> Astha Sharma </a>
-		<h4> Powered by <a href="https://www.apispreadsheets.com" style="text-decoration: none"> API Spreadsheets </a> </h4>
+		<h4> Built by <a href="https://github.com/mrjk05" style="text-decoration: none"> Limited Collective </a>
 	</footer>
 	<script>
 		let allNamesElm = document.getElementById("allNames")
@@ -35,56 +34,13 @@
 			errorMessageElm.style.display = "block"
 		}
 			
-		fetch("https://api.apispreadsheets.com/data/7765/").then(res=>{
-			if (res.status === 200){
-				res.json().then(data=>{
-					const yourData = data["data"]
-					for(let i = 0; i < yourData.length; i++){
-						let rowInfo = yourData[i]
-
-						let rowInfoDiv = document.createElement("div")
-						rowInfoDiv.classList.add("name-row")
-
-						let rowName = document.createElement("h4")
-						let rowNameNode = document.createTextNode(rowInfo["name"])
-						rowName.appendChild(rowNameNode)
-						rowName.classList.add("name")
-
-						let rowWritten = document.createElement("p")
-						let rowWrittenNode = document.createTextNode(rowInfo["written"])
-						rowWritten.appendChild(rowWrittenNode)
-						rowWritten.classList.add("written")
-
-						
-						let rowAudio = document.createElement("audio")
-						rowAudio.id = "audio-player"
-						rowAudio.controls = "controls"
-						rowAudio.src = rowInfo["audio"]
-						rowAudio.type = "audio/mpeg"
-						rowAudio.classList.add("audio")
-
-						rowInfoDiv.appendChild(rowName)
-						rowInfoDiv.appendChild(rowWritten)
-						rowInfoDiv.appendChild(rowAudio)
-
-						allNamesElm.appendChild(rowInfoDiv)
-
-					}
-					
-					loaderElm.style.display = "none"
-					allNamesElm.style.display = "block"
-					errorMessageElm.style.display = "none"
-
-				}).catch(err => {
-					setErrorDisplay()
-				})
-			}
-			else{
-				setErrorDisplay()
-			}
-		}).catch(err =>{
-			setErrorDisplay()
-		})
+		fetch("https://opensheet.elk.sh/1DI-ps3y-BblbwRe33uhyTAAYLdYxhvnoyA2FsF_ohus/1")
+  			.then((res) => res.json())
+  			.then((data) => {
+    		data.forEach((row) => {
+      			console.log(row)
+    		});
+  		});
 	</script>
 </body>
 </html>
