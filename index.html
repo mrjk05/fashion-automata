@@ -11,10 +11,22 @@
 		<h3>Daily dose of fashion news curated by humans</h3>
 	</div>	
 	<div id="display">
-		<div id="loader"> 
-			<h4>loading</h4> 
-		</div>
-		<div id="allNames">
+		<div id="newsFeed">
+			<div id="current_date"></p>
+				<script>
+					date = new Date();
+					year = date.getFullYear();
+					month = date.getMonth() + 1;
+					day = date.getDate();
+					document.getElementById("current_date").innerHTML = day + "/" + month + "/" + year;
+				</script>
+			</div>
+			<div class="news_publication">
+				Publication name
+			</div>
+			<div class="news_title">
+				<a href="">News title - this will be quite long</a>
+			</div>
 		</div>
 		<div id="errorMessage"> 
 			<h2> Failed to get data. Please refresh </h2>
@@ -24,13 +36,11 @@
 		<h4> Built by <a href="https://github.com/mrjk05" style="text-decoration: none"> Limited Collective </a>
 	</footer>
 	<script>
-		let allNamesElm = document.getElementById("allNames")
-		let loaderElm = document.getElementById("loader")
+		let newsFeed = document.getElementById("newsFeed")
 		let errorMessageElm = document.getElementById("errorMessage")
 		
 		function setErrorDisplay(){
-			loaderElm.style.display = "none"
-			allNamesElm.style.display = "none"
+			newsFeed.style.display = "none"
 			errorMessageElm.style.display = "block"
 		}
 			
